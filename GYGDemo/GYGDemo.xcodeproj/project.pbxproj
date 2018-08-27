@@ -30,6 +30,7 @@
 		4B9A82FA2133F3E7002C4745 /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82F92133F3E7002C4745 /* APIEnvironment.swift */; };
 		4B9A82FC2133F3EE002C4745 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82FB2133F3EE002C4745 /* APIClient.swift */; };
 		4B9A82FF2133F55F002C4745 /* EndpointDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82FE2133F55F002C4745 /* EndpointDescriptor.swift */; };
+		4B9A83032133F648002C4745 /* TourRatingEndpointDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A83022133F648002C4745 /* TourRatingEndpointDescriptor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		4B9A82F92133F3E7002C4745 /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
 		4B9A82FB2133F3EE002C4745 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		4B9A82FE2133F55F002C4745 /* EndpointDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointDescriptor.swift; sourceTree = "<group>"; };
+		4B9A83022133F648002C4745 /* TourRatingEndpointDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourRatingEndpointDescriptor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -233,6 +235,7 @@
 			isa = PBXGroup;
 			children = (
 				4B9A82FE2133F55F002C4745 /* EndpointDescriptor.swift */,
+				4B9A83022133F648002C4745 /* TourRatingEndpointDescriptor.swift */,
 			);
 			path = "Endpoint Descriptors";
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				4B9A82E22133EF47002C4745 /* TableViewCellProviding.swift in Sources */,
 				4B1ADD072133EB8F009C6CE1 /* ViewController.swift in Sources */,
 				4B9A82FC2133F3EE002C4745 /* APIClient.swift in Sources */,
+				4B9A83032133F648002C4745 /* TourRatingEndpointDescriptor.swift in Sources */,
 				4B9A82E82133EF73002C4745 /* ReuseIdentifierProviding.swift in Sources */,
 				4B9A82EC2133EF94002C4745 /* ViewModel.swift in Sources */,
 				4B9A82DB2133EE64002C4745 /* ApplicationContext.swift in Sources */,
