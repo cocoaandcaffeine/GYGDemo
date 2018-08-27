@@ -26,12 +26,19 @@ class RatingCommentTableViewCell: UITableViewCell, ReusableCellProviding {
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        updateUI()
     }
     
     // MARK: - Update UI
     private func updateUI() {
         
-        guard let comment = viewModel?.comment else { return }
+        guard let comment = viewModel?.comment else {
+            titleLabel.text = nil
+            messageLabel.text = nil
+            ratingView.value = 0.0
+            infoLabel.text = nil
+            return
+        }
         titleLabel.text = comment.title ?? "Review comment"
         messageLabel.text = comment.message
         ratingView.value = CGFloat.init(comment.rating)
