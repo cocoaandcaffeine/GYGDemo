@@ -19,4 +19,11 @@ struct RatingCommentsPage: Decodable {
         case successful = "status"
         case totalReviewComments = "total_reviews_comments"
     }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.comments = try container.decodeIfPresent([RatingComment].self, forKey: .comments) ?? []
+        self.successful = try container.decode(Bool.self, forKey: .successful)
+        self.totalReviewComments = try container.decode(Int.self, forKey: .totalReviewComments)
+    }
 }

@@ -51,19 +51,27 @@ struct RatingComment: Decodable {
         self.isForeignLanguage = try container.decode(Bool.self, forKey: .isForeignLanguage)
         self.languageCode = try container.decode(String.self, forKey: .languageCode)
         
-        let htmlString = try container.decode(String.self, forKey: .message)
-        guard let htmlData = htmlString.data(using: .utf16) else {
-            throw DecodingError.dataCorruptedError(in: try decoder.unkeyedContainer(), debugDescription: "Invalid message string: \(htmlString)")
+        if let htmlTitleString = try container.decodeIfPresent(String.self, forKey: .title), !htmlTitleString.isEmpty {
+            guard let htmlTitleData = htmlTitleString.data(using: .utf16) else {
+                throw DecodingError.dataCorruptedError(in: try decoder.unkeyedContainer(), debugDescription: "Invalid title string: \(htmlTitleString)")
+            }
+            let attributedTitleString = try NSAttributedString(data: htmlTitleData, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+            title = attributedTitleString.string
+        } else {
+            title = nil
         }
-        let attributedString = try NSAttributedString(data: htmlData, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
-        message = attributedString.string
+        
+        let htmlMessageString = try container.decode(String.self, forKey: .message)
+        guard let htmlMessageData = htmlMessageString.data(using: .utf16) else {
+            throw DecodingError.dataCorruptedError(in: try decoder.unkeyedContainer(), debugDescription: "Invalid message string: \(htmlMessageString)")
+        }
+        let attributedMessageString = try NSAttributedString(data: htmlMessageData, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+        message = attributedMessageString.string
         
         self.rating = Double(try container.decode(String.self, forKey: .rating)) ?? 0.0
         self.identifier = try container.decode(Int.self, forKey: .identifier)
         self.reviewerCountry = try container.decode(String.self, forKey: .reviewerCountry)
         self.reviewerName = try container.decode(String.self, forKey: .reviewerName)
-        self.title = try container.decodeIfPresent(String.self, forKey: .title)
         self.travelerType = try container.decodeIfPresent(TravelerType.self, forKey: .travelerType)
-        
     }
 }
