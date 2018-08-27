@@ -69,6 +69,7 @@ class ApplicationCoordinator: NSObject {
     // MARK: - Helper
     private func viewControllerFromDestination(_ destination: PresentationRoute.Destination) -> UIViewController {
         switch destination {
+        case .settings(let viewModel): return viewModel.provideViewController()
         }
     }
     
@@ -78,6 +79,8 @@ class ApplicationCoordinator: NSObject {
             push(viewController: viewController, animated: animated, completionHandler: completionHandler)
         case .modal:
             presentModal(viewController: viewController, animated: animated, completionHandler: completionHandler)
+        case .popoverFromBarButtonItem(let barButtonItem):
+            presentInPopover(viewController: viewController, animated: animated, from: barButtonItem, completionHandler: completionHandler)
         }
     }
     
@@ -99,6 +102,19 @@ class ApplicationCoordinator: NSObject {
         }
     }
     
+    private func presentInPopover(viewController: UIViewController, animated: Bool, from barButtonItem: UIBarButtonItem, completionHandler: (() -> Void)?) {
+        
+        viewController.modalPresentationStyle = .popover
+        
+        let presentationController = viewController.popoverPresentationController
+        presentationController?.permittedArrowDirections = .any
+        presentationController?.barButtonItem = barButtonItem
+        presentationController?.delegate = self
+        presentationController?.backgroundColor = viewController.view.backgroundColor
+        
+        presentModal(viewController: viewController, animated: animated, completionHandler: completionHandler)
+    }
+    
     private func wrappedInNavigationController(viewController: UIViewController) -> UINavigationController {
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.delegate = self
@@ -111,5 +127,12 @@ class ApplicationCoordinator: NSObject {
 
 extension ApplicationCoordinator: UINavigationControllerDelegate {
     
+}
+
+extension ApplicationCoordinator: UIPopoverPresentationControllerDelegate {
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
 }
 

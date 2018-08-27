@@ -12,12 +12,13 @@ import UIKit
 struct PresentationRoute {
     
     enum Destination {
-        
+        case settings(SettingsViewModel)
     }
     
     enum PresentationStyle {
         case push
         case modal
+        case popoverFromBarButtonItem(UIBarButtonItem)
     }
     
     let destination: Destination

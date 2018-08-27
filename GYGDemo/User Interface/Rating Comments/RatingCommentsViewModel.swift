@@ -108,6 +108,18 @@ class RatingCommentsViewModel: ViewModel {
         })
     }
     
+    // MARK: - Handle user interaction
+    func handleShowSettingsTapped(_ sender: UIBarButtonItem) {
+        
+        let settingsViewModel = SettingsViewModel(applicationContext: applicationContext)
+        let route = PresentationRoute(destination: .settings(settingsViewModel), preferredPresentationStyle: .popoverFromBarButtonItem(sender), prefersAnimatedPresentation: true, transitioningDelegate: nil)
+        applicationContext.applicationCoordinator.present(route)
+    }
+    
+    func handleCreateCommentTapped(_ sender: UIBarButtonItem) {
+        
+    }
+    
     // MARK: - Helper
     private func handleErrorMessage(_ message: String) {
         guard let delegate = delegate else {

@@ -73,23 +73,12 @@ class RatingCommentsViewController: UIViewController {
     }
     
     // MARK: - Actions
-    @objc private func showSettings(_ sender: Any) {
-        guard let applicationContext = viewModel?.applicationContext else { return }
-        let settingsViewModel = SettingsViewModel(applicationContext: applicationContext)
-        let viewController = settingsViewModel.provideViewController()
-        viewController.modalPresentationStyle = .popover
-
-        let controller = viewController.popoverPresentationController
-        controller?.permittedArrowDirections = .up
-        controller?.sourceView = sender as? UIView
-        controller?.barButtonItem = navigationItem.leftBarButtonItem
-        controller?.delegate = self
- 
-        present(viewController, animated: true, completion: nil)
+    @objc private func showSettings(_ sender: UIBarButtonItem) {
+        viewModel?.handleShowSettingsTapped(sender)
     }
     
-    @objc private func createComment(_ sender: Any) {
-        
+    @objc private func createComment(_ sender: UIBarButtonItem) {
+        viewModel?.handleCreateCommentTapped(sender)
     }
     
     // MARK: - Maintain Cell Size Cache
@@ -195,12 +184,5 @@ extension RatingCommentsViewController: RatingCommentsViewModelDelegate {
     func ratingCommentsViewModelPageLoadingUnsuccessful(_ ratingCommentsViewModel: RatingCommentsViewModel) {
         guard refreshControl.isRefreshing else { return }
         refreshControl.endRefreshing()
-    }
-}
-
-extension RatingCommentsViewController: UIPopoverPresentationControllerDelegate {
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-        return .none
     }
 }
