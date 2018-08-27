@@ -8,10 +8,13 @@
 
 import Foundation
 import UIKit
+import HCSStarRatingView
 
 class SettingsViewController: UIViewController {
     
     // MARK: - Outlets
+    @IBOutlet weak var filterRatingSwitch: UISwitch!
+    @IBOutlet weak var ratingView: HCSStarRatingView!
     
     // MARK: - Public properties
     var viewModel: SettingsViewModel? {
@@ -20,6 +23,17 @@ class SettingsViewController: UIViewController {
             viewModel?.delegate = self
         }
     }
+    
+    // MARK: - Actions
+    @IBAction func filterRatingSwitchAction(_ sender: Any) {
+        print("switch")
+        ratingView.isEnabled = filterRatingSwitch.isOn
+    }
+    
+    @IBAction func ratingViewAction(_ sender: Any) {
+        print("view")
+    }
+    
 }
 
 extension SettingsViewController: SettingsViewModelDelegate {
