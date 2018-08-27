@@ -15,12 +15,12 @@ class ApplicationCoordinator: NSObject {
     let applicationContext: ApplicationContext
     
     // MARK: - Private properties
-    private lazy var ratingBrowserModel: RatingBrowserViewModel = {
-        return RatingBrowserViewModel(applicationContext: applicationContext)
+    private lazy var ratingBrowserModel: RatingCommentsViewModel = {
+        return RatingCommentsViewModel(applicationContext: applicationContext)
     }()
     
-    private lazy var ratingBrowserViewController: RatingBrowserViewController = {
-        guard let viewController = ratingBrowserModel.provideViewController() as? RatingBrowserViewController else {
+    private lazy var ratingBrowserViewController: RatingCommentsViewController = {
+        guard let viewController = ratingBrowserModel.provideViewController() as? RatingCommentsViewController else {
             fatalError("Could not instantiate RatingBrowserViewController")
         }
         return viewController

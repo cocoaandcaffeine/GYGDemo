@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class RatingBrowserViewModel: ViewModel {
+class RatingCommentsViewModel: ViewModel {
     
     // MARK: - Public properties
     let applicationContext: ApplicationContext
@@ -22,10 +22,10 @@ class RatingBrowserViewModel: ViewModel {
     }
 }
 
-extension RatingBrowserViewModel: ViewControllerProviding {
+extension RatingCommentsViewModel: ViewControllerProviding {
     
     func provideViewController() -> UIViewController {
-        let viewController = RatingBrowserViewController.instantiateFromStoryboard()
+        let viewController = RatingCommentsViewController.instantiateFromStoryboard()
         viewController.viewModel = self
         return viewController
     }

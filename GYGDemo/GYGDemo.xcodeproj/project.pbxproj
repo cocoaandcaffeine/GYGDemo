@@ -23,9 +23,9 @@
 		4B9A82E82133EF73002C4745 /* ReuseIdentifierProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82E72133EF73002C4745 /* ReuseIdentifierProviding.swift */; };
 		4B9A82EA2133EF89002C4745 /* ViewControllerProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82E92133EF89002C4745 /* ViewControllerProviding.swift */; };
 		4B9A82EC2133EF94002C4745 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82EB2133EF94002C4745 /* ViewModel.swift */; };
-		4B9A82F02133F071002C4745 /* RatingBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82EF2133F071002C4745 /* RatingBrowserViewController.swift */; };
-		4B9A82F22133F07A002C4745 /* RatingBrowserViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B9A82F12133F07A002C4745 /* RatingBrowserViewController.storyboard */; };
-		4B9A82F42133F098002C4745 /* RatingBrowserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82F32133F098002C4745 /* RatingBrowserViewModel.swift */; };
+		4B9A82F02133F071002C4745 /* RatingCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82EF2133F071002C4745 /* RatingCommentsViewController.swift */; };
+		4B9A82F22133F07A002C4745 /* RatingCommentsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B9A82F12133F07A002C4745 /* RatingCommentsViewController.storyboard */; };
+		4B9A82F42133F098002C4745 /* RatingCommentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82F32133F098002C4745 /* RatingCommentsViewModel.swift */; };
 		4B9A82F72133F0D4002C4745 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82F62133F0D4002C4745 /* UIViewController+Extensions.swift */; };
 		4B9A82FA2133F3E7002C4745 /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82F92133F3E7002C4745 /* APIEnvironment.swift */; };
 		4B9A82FC2133F3EE002C4745 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82FB2133F3EE002C4745 /* APIClient.swift */; };
@@ -75,9 +75,9 @@
 		4B9A82E72133EF73002C4745 /* ReuseIdentifierProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReuseIdentifierProviding.swift; sourceTree = "<group>"; };
 		4B9A82E92133EF89002C4745 /* ViewControllerProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerProviding.swift; sourceTree = "<group>"; };
 		4B9A82EB2133EF94002C4745 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		4B9A82EF2133F071002C4745 /* RatingBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingBrowserViewController.swift; sourceTree = "<group>"; };
-		4B9A82F12133F07A002C4745 /* RatingBrowserViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RatingBrowserViewController.storyboard; sourceTree = "<group>"; };
-		4B9A82F32133F098002C4745 /* RatingBrowserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingBrowserViewModel.swift; sourceTree = "<group>"; };
+		4B9A82EF2133F071002C4745 /* RatingCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingCommentsViewController.swift; sourceTree = "<group>"; };
+		4B9A82F12133F07A002C4745 /* RatingCommentsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RatingCommentsViewController.storyboard; sourceTree = "<group>"; };
+		4B9A82F32133F098002C4745 /* RatingCommentsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingCommentsViewModel.swift; sourceTree = "<group>"; };
 		4B9A82F62133F0D4002C4745 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		4B9A82F92133F3E7002C4745 /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
 		4B9A82FB2133F3EE002C4745 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -203,19 +203,19 @@
 		4B9A82ED2133F013002C4745 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
-				4B9A82EE2133F042002C4745 /* Rating Browser */,
+				4B9A82EE2133F042002C4745 /* Rating Comments */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
 		};
-		4B9A82EE2133F042002C4745 /* Rating Browser */ = {
+		4B9A82EE2133F042002C4745 /* Rating Comments */ = {
 			isa = PBXGroup;
 			children = (
-				4B9A82EF2133F071002C4745 /* RatingBrowserViewController.swift */,
-				4B9A82F12133F07A002C4745 /* RatingBrowserViewController.storyboard */,
-				4B9A82F32133F098002C4745 /* RatingBrowserViewModel.swift */,
+				4B9A82EF2133F071002C4745 /* RatingCommentsViewController.swift */,
+				4B9A82F12133F07A002C4745 /* RatingCommentsViewController.storyboard */,
+				4B9A82F32133F098002C4745 /* RatingCommentsViewModel.swift */,
 			);
-			path = "Rating Browser";
+			path = "Rating Comments";
 			sourceTree = "<group>";
 		};
 		4B9A82F52133F0BF002C4745 /* Extensions */ = {
@@ -359,7 +359,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4B1ADD0F2133EB90009C6CE1 /* LaunchScreen.storyboard in Resources */,
-				4B9A82F22133F07A002C4745 /* RatingBrowserViewController.storyboard in Resources */,
+				4B9A82F22133F07A002C4745 /* RatingCommentsViewController.storyboard in Resources */,
 				4B1ADD0C2133EB90009C6CE1 /* Assets.xcassets in Resources */,
 				4B1ADD0A2133EB8F009C6CE1 /* Main.storyboard in Resources */,
 			);
@@ -386,7 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4B9A82F42133F098002C4745 /* RatingBrowserViewModel.swift in Sources */,
+				4B9A82F42133F098002C4745 /* RatingCommentsViewModel.swift in Sources */,
 				4B9A82E22133EF47002C4745 /* TableViewCellProviding.swift in Sources */,
 				4B1ADD072133EB8F009C6CE1 /* ViewController.swift in Sources */,
 				4B9A82FC2133F3EE002C4745 /* APIClient.swift in Sources */,
@@ -398,7 +398,7 @@
 				4B1ADD052133EB8F009C6CE1 /* AppDelegate.swift in Sources */,
 				4B9A82FA2133F3E7002C4745 /* APIEnvironment.swift in Sources */,
 				4B9A82DD2133EE6D002C4745 /* ApplicationCoordinator.swift in Sources */,
-				4B9A82F02133F071002C4745 /* RatingBrowserViewController.swift in Sources */,
+				4B9A82F02133F071002C4745 /* RatingCommentsViewController.swift in Sources */,
 				4B9A82F72133F0D4002C4745 /* UIViewController+Extensions.swift in Sources */,
 				4B9A82DF2133EE8F002C4745 /* PresentationRoute.swift in Sources */,
 				4B9A83082133FC98002C4745 /* RatingComment.swift in Sources */,
