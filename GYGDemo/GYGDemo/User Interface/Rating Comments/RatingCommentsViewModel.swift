@@ -15,6 +15,9 @@ protocol RatingCommentsViewModelDelegate: class {
 
 class RatingCommentsViewModel: ViewModel {
     
+    private static let InitialPageLoadCount = 5
+    private static let PageSize = 5
+    
     // MARK: - Public properties
     let applicationContext: ApplicationContext
     
@@ -46,7 +49,7 @@ class RatingCommentsViewModel: ViewModel {
         isLoading = true
         
         let pageIndex = isReload ? 0 : pages.count
-        let descriptor = RatingCommentsEndpointDescriptor.standard(path: "/berlin-l17/tempelhof-2-hour-airport-history-tour-berlin-airlift-more-t23776/reviews.json", count: 5, page: pageIndex, rating: nil, sortBy: nil, direction: nil)
+        let descriptor = RatingCommentsEndpointDescriptor.standard(path: "/berlin-l17/tempelhof-2-hour-airport-history-tour-berlin-airlift-more-t23776/reviews.json", count: RatingCommentsViewModel.PageSize, page: pageIndex, rating: nil, sortBy: nil, direction: nil)
         
         applicationContext.apiClient.perform(for: descriptor, resultType: RatingCommentsPage.self, completion: { [weak self] (result, error) in
             
@@ -82,6 +85,8 @@ class RatingCommentsViewModel: ViewModel {
             
             self?.delegate?.ratingCommentsViewModel(self!, added: indexPaths, deleted: deletedIndexPaths.isEmpty ? nil : deletedIndexPaths)
             self?.isLoading = false
+            
+            if newPages.count < RatingCommentsViewModel.InitialPageLoadCount, commentViewModels.count < page.totalReviewComments { self?.loadMore() }
         })
     }
     

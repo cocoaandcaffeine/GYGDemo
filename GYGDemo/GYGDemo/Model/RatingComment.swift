@@ -13,6 +13,7 @@ struct RatingComment: Decodable {
     enum TravelerType: String, Decodable {
         case couple = "couple"
         case friends = "friends"
+        case familyYoung = "family_young"
         case familyOld = "family_old"
         case solo = "solo"
     }
@@ -28,9 +29,7 @@ struct RatingComment: Decodable {
     let reviewerName: String
     let title: String?
     let travelerType: TravelerType?
-    
-    
-    
+
     private enum CodingKeys: String, CodingKey {
         case author = "author"
         case dateString = "date"
