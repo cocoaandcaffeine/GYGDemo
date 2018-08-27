@@ -17,4 +17,27 @@ class CreateCommentViewController: UIViewController {
             
         }
     }
+    
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        title = "Write Review"
+        
+        setupBarButtonItems()
+    }
+    
+    // MARK: - Helper
+    private func setupBarButtonItems() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Send", style: .plain, target: self, action: #selector(createComment(_:)))
+    }
+    
+    // MARK: - Actions
+    @objc private func cancelAction(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @objc private func createComment(_ sender: UIBarButtonItem) {
+        
+    }
 }
