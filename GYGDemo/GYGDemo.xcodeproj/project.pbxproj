@@ -27,6 +27,9 @@
 		4B9A82F22133F07A002C4745 /* RatingBrowserViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B9A82F12133F07A002C4745 /* RatingBrowserViewController.storyboard */; };
 		4B9A82F42133F098002C4745 /* RatingBrowserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82F32133F098002C4745 /* RatingBrowserViewModel.swift */; };
 		4B9A82F72133F0D4002C4745 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82F62133F0D4002C4745 /* UIViewController+Extensions.swift */; };
+		4B9A82FA2133F3E7002C4745 /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82F92133F3E7002C4745 /* APIEnvironment.swift */; };
+		4B9A82FC2133F3EE002C4745 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82FB2133F3EE002C4745 /* APIClient.swift */; };
+		4B9A82FF2133F55F002C4745 /* EndpointDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82FE2133F55F002C4745 /* EndpointDescriptor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		4B9A82F12133F07A002C4745 /* RatingBrowserViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RatingBrowserViewController.storyboard; sourceTree = "<group>"; };
 		4B9A82F32133F098002C4745 /* RatingBrowserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingBrowserViewModel.swift; sourceTree = "<group>"; };
 		4B9A82F62133F0D4002C4745 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		4B9A82F92133F3E7002C4745 /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
+		4B9A82FB2133F3EE002C4745 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		4B9A82FE2133F55F002C4745 /* EndpointDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointDescriptor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +131,7 @@
 			children = (
 				4B9A82D82133EE45002C4745 /* App Delegate */,
 				4B9A82D92133EE4F002C4745 /* Application Context */,
+				4B9A82F82133F3C6002C4745 /* API Client */,
 				4B9A82ED2133F013002C4745 /* User Interface */,
 				4B9A82E02133EF2E002C4745 /* Common Protocols */,
 				4B9A82F52133F0BF002C4745 /* Extensions */,
@@ -210,6 +217,24 @@
 				4B9A82F62133F0D4002C4745 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4B9A82F82133F3C6002C4745 /* API Client */ = {
+			isa = PBXGroup;
+			children = (
+				4B9A82F92133F3E7002C4745 /* APIEnvironment.swift */,
+				4B9A82FB2133F3EE002C4745 /* APIClient.swift */,
+				4B9A82FD2133F546002C4745 /* Endpoint Descriptors */,
+			);
+			path = "API Client";
+			sourceTree = "<group>";
+		};
+		4B9A82FD2133F546002C4745 /* Endpoint Descriptors */ = {
+			isa = PBXGroup;
+			children = (
+				4B9A82FE2133F55F002C4745 /* EndpointDescriptor.swift */,
+			);
+			path = "Endpoint Descriptors";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -347,15 +372,18 @@
 				4B9A82F42133F098002C4745 /* RatingBrowserViewModel.swift in Sources */,
 				4B9A82E22133EF47002C4745 /* TableViewCellProviding.swift in Sources */,
 				4B1ADD072133EB8F009C6CE1 /* ViewController.swift in Sources */,
+				4B9A82FC2133F3EE002C4745 /* APIClient.swift in Sources */,
 				4B9A82E82133EF73002C4745 /* ReuseIdentifierProviding.swift in Sources */,
 				4B9A82EC2133EF94002C4745 /* ViewModel.swift in Sources */,
 				4B9A82DB2133EE64002C4745 /* ApplicationContext.swift in Sources */,
 				4B9A82E62133EF64002C4745 /* ReusableCellProviding.swift in Sources */,
 				4B1ADD052133EB8F009C6CE1 /* AppDelegate.swift in Sources */,
+				4B9A82FA2133F3E7002C4745 /* APIEnvironment.swift in Sources */,
 				4B9A82DD2133EE6D002C4745 /* ApplicationCoordinator.swift in Sources */,
 				4B9A82F02133F071002C4745 /* RatingBrowserViewController.swift in Sources */,
 				4B9A82F72133F0D4002C4745 /* UIViewController+Extensions.swift in Sources */,
 				4B9A82DF2133EE8F002C4745 /* PresentationRoute.swift in Sources */,
+				4B9A82FF2133F55F002C4745 /* EndpointDescriptor.swift in Sources */,
 				4B9A82E42133EF55002C4745 /* NibProviding.swift in Sources */,
 				4B9A82EA2133EF89002C4745 /* ViewControllerProviding.swift in Sources */,
 			);

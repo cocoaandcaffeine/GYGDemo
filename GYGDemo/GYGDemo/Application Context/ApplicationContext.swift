@@ -9,10 +9,15 @@
 import Foundation
 
 protocol ApplicationContext {
+    var apiClient: APIClient { get }
     var applicationCoordinator: ApplicationCoordinator { get }
 }
 
 class DefaultApplicationContext: ApplicationContext {
+    
+    private(set) lazy var apiClient: APIClient = {
+        return APIClient(environment: .standard)
+    }()
     
     private (set) lazy var applicationCoordinator: ApplicationCoordinator = {
         return ApplicationCoordinator(applicationContext: self)
