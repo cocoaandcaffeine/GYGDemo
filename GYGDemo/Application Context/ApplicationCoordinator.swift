@@ -34,10 +34,15 @@ class ApplicationCoordinator: NSObject {
     // MARK: - Startup
     func start(in window: UIWindow) {
         
-        if let font = UIFont(name: "AvenirNext-UltraLight", size: 20) {
-            let attributes = [kCTFontAttributeName: font] as [NSAttributedStringKey : Any]
+        if let font = UIFont(name: "AvenirNext-Bold", size: 20) {
+            let attributes = [NSAttributedStringKey.font: font, NSAttributedStringKey.foregroundColor: UIColor.white] as [NSAttributedStringKey : Any]
             UINavigationBar.appearance().titleTextAttributes = attributes
         }
+        UINavigationBar.appearance().barTintColor = UIColor.barTintColor
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().backgroundColor = .white
+        
+        UIApplication.shared.statusBarStyle = .lightContent
         
         let navigationController = wrappedInNavigationController(viewController: ratingBrowserViewController)
         

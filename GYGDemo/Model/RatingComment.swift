@@ -23,7 +23,7 @@ struct RatingComment: Decodable {
     let isForeignLanguage: Bool
     let languageCode: String
     let message: String
-    let rating: String
+    let rating: Double
     let identifier: Int
     let reviewerCountry: String
     let reviewerName: String
@@ -58,7 +58,7 @@ struct RatingComment: Decodable {
         let attributedString = try NSAttributedString(data: htmlData, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
         message = attributedString.string
         
-        self.rating = try container.decode(String.self, forKey: .rating)
+        self.rating = Double(try container.decode(String.self, forKey: .rating)) ?? 0.0
         self.identifier = try container.decode(Int.self, forKey: .identifier)
         self.reviewerCountry = try container.decode(String.self, forKey: .reviewerCountry)
         self.reviewerName = try container.decode(String.self, forKey: .reviewerName)

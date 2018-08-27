@@ -8,12 +8,15 @@
 
 import Foundation
 import UIKit
+import HCSStarRatingView
 
 class RatingCommentTableViewCell: UITableViewCell, ReusableCellProviding {
  
     // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
+    @IBOutlet weak var ratingView: HCSStarRatingView!
     
     // MARK: - Public properties
     var viewModel: RatingCommentTableViewCellModel? {
@@ -27,7 +30,12 @@ class RatingCommentTableViewCell: UITableViewCell, ReusableCellProviding {
     
     // MARK: - Update UI
     private func updateUI() {
-
+        
+        guard let comment = viewModel?.comment else { return }
+        titleLabel.text = comment.title ?? "Review comment"
+        messageLabel.text = comment.message
+        ratingView.value = CGFloat.init(comment.rating)
+        infoLabel.text = "\(comment.author)・\(comment.dateString)"
     }
     
     // MARK: - Overrides

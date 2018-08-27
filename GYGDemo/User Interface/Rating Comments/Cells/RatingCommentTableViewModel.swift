@@ -33,8 +33,6 @@ extension RatingCommentTableViewCellModel: TableViewCellProviding {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RatingCommentTableViewCell.reuseIdentifier, for: indexPath) as? RatingCommentTableViewCell else { return UITableViewCell() }
         cell.viewModel = self
         cell.selectionStyle = .none
-        cell.titleLabel.text = comment.title ?? "Review comment"
-        cell.messageLabel.text = comment.message
         return cell
     }
 }

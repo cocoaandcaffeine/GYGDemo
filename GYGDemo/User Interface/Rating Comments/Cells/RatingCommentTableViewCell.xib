@@ -24,28 +24,55 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKq-eo-S2g">
-                        <rect key="frame" x="16" y="56" width="343" height="93"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKq-eo-S2g">
+                        <rect key="frame" x="16" y="84" width="343" height="24"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7Tx-Mx-NyP" customClass="HCSStarRatingView">
+                        <rect key="frame" x="16" y="48" width="81" height="16"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.99607843137254903" green="0.77647058823529413" blue="0.20784313725490197" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="10" id="DA6-7r-37b"/>
+                            <constraint firstAttribute="width" constant="80" id="Ouh-XU-yb0"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLU-Wn-2wX">
+                        <rect key="frame" x="16" y="128" width="343" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="YKq-eo-S2g" secondAttribute="bottom" constant="10.5" id="7GU-wU-91S"/>
-                    <constraint firstItem="YKq-eo-S2g" firstAttribute="top" secondItem="l6q-P7-slw" secondAttribute="bottom" constant="16" id="DxB-bh-Y6O"/>
+                    <constraint firstItem="FLU-Wn-2wX" firstAttribute="leading" secondItem="TKE-WZ-DHy" secondAttribute="leading" constant="16" id="4i1-Ji-jGj"/>
+                    <constraint firstItem="7Tx-Mx-NyP" firstAttribute="top" secondItem="l6q-P7-slw" secondAttribute="bottom" constant="8" id="BWt-PJ-MQb"/>
                     <constraint firstItem="l6q-P7-slw" firstAttribute="leading" secondItem="TKE-WZ-DHy" secondAttribute="leading" constant="16" id="G3Q-FS-jvt"/>
+                    <constraint firstItem="7Tx-Mx-NyP" firstAttribute="leading" secondItem="TKE-WZ-DHy" secondAttribute="leading" constant="16" id="GYu-Fp-iaG"/>
                     <constraint firstItem="l6q-P7-slw" firstAttribute="top" secondItem="TKE-WZ-DHy" secondAttribute="top" constant="24" id="JWd-p1-rON"/>
+                    <constraint firstItem="FLU-Wn-2wX" firstAttribute="top" secondItem="YKq-eo-S2g" secondAttribute="bottom" constant="8" id="Nl1-qr-tnI"/>
+                    <constraint firstAttribute="trailing" secondItem="FLU-Wn-2wX" secondAttribute="trailing" constant="16" id="RxS-lg-OUB"/>
                     <constraint firstAttribute="trailing" secondItem="l6q-P7-slw" secondAttribute="trailing" constant="16" id="UbO-p5-Htb"/>
+                    <constraint firstItem="YKq-eo-S2g" firstAttribute="top" secondItem="7Tx-Mx-NyP" secondAttribute="bottom" constant="16" id="acT-y1-8qS"/>
                     <constraint firstItem="YKq-eo-S2g" firstAttribute="leading" secondItem="TKE-WZ-DHy" secondAttribute="leading" constant="16" id="hEb-uQ-rEW"/>
+                    <constraint firstAttribute="bottom" secondItem="FLU-Wn-2wX" secondAttribute="bottom" constant="12" id="ntD-1h-9m6"/>
                     <constraint firstAttribute="trailing" secondItem="YKq-eo-S2g" secondAttribute="trailing" constant="16" id="tRW-St-mlz"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="infoLabel" destination="FLU-Wn-2wX" id="IGy-TL-VHO"/>
                 <outlet property="messageLabel" destination="YKq-eo-S2g" id="djF-9B-69E"/>
+                <outlet property="ratingView" destination="7Tx-Mx-NyP" id="XwI-aX-al7"/>
                 <outlet property="titleLabel" destination="l6q-P7-slw" id="QDU-8R-uOb"/>
             </connections>
-            <point key="canvasLocation" x="-94.5" y="35"/>
+            <point key="canvasLocation" x="74.5" y="58"/>
         </tableViewCell>
     </objects>
 </document>
