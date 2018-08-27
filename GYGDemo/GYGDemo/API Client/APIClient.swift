@@ -16,7 +16,11 @@ enum APIClientError: Error {
 
 class APIClient {
     
+    // MARK: - Public properties
     let environment: APIEnvironment
+    
+    // MARK: - Public properties
+    private let modelCreationQueue = DispatchQueue(label: "com.gert.andreas.GYGDemo.ModelCreationQueue", attributes: .concurrent)
     
     private lazy var session: URLSession = {
         return URLSession(configuration: environment.sessionConfiguration)
@@ -44,7 +48,7 @@ class APIClient {
         let request = NSMutableURLRequest(url: url)
         request.httpMethod = descriptor.httpMethod.rawValue
         
-        let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
+        let task = session.dataTask(with: request as URLRequest) { [weak self] (data, response, error) in
             
             guard let data = data else {
                 let responseError = APIClientError.responseError(error)
@@ -53,12 +57,14 @@ class APIClient {
             
             let decoder = JSONDecoder()
             
-            do {
-                let decodable = try decoder.decode(T.self, from: data)
-                DispatchQueue.main.async { completion(decodable, nil) }
-            } catch {
-                let responseError = APIClientError.responseDecodeError(error)
-                DispatchQueue.main.async { completion(nil, responseError) }
+            self?.modelCreationQueue.async {
+                do {
+                    let decodable = try decoder.decode(T.self, from: data)
+                    DispatchQueue.main.async { completion(decodable, nil) }
+                } catch {
+                    let responseError = APIClientError.responseDecodeError(error)
+                    DispatchQueue.main.async { completion(nil, responseError) }
+                }
             }
         }
         task.resume()

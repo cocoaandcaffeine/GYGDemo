@@ -43,4 +43,27 @@ struct RatingComment: Decodable {
         case title = "title"
         case travelerType = "traveler_type"
     }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.author = try container.decode(String.self, forKey: .author)
+        self.dateString = try container.decode(String.self, forKey: .dateString)
+        self.isForeignLanguage = try container.decode(Bool.self, forKey: .isForeignLanguage)
+        self.languageCode = try container.decode(String.self, forKey: .languageCode)
+        
+        let htmlString = try container.decode(String.self, forKey: .message)
+        guard let htmlData = htmlString.data(using: .utf16) else {
+            throw DecodingError.dataCorruptedError(in: try decoder.unkeyedContainer(), debugDescription: "Invalid message string: \(htmlString)")
+        }
+        let attributedString = try NSAttributedString(data: htmlData, options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.html], documentAttributes: nil)
+        message = attributedString.string
+        
+        self.rating = try container.decode(String.self, forKey: .rating)
+        self.identifier = try container.decode(Int.self, forKey: .identifier)
+        self.reviewerCountry = try container.decode(String.self, forKey: .reviewerCountry)
+        self.reviewerName = try container.decode(String.self, forKey: .reviewerName)
+        self.title = try container.decodeIfPresent(String.self, forKey: .title)
+        self.travelerType = try container.decodeIfPresent(TravelerType.self, forKey: .travelerType)
+        
+    }
 }
