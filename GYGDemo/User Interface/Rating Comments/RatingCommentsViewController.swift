@@ -29,6 +29,8 @@ class RatingCommentsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Rating Comments"
+        
+        setupBarButtonItems()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -63,6 +65,31 @@ class RatingCommentsViewController: UIViewController {
     private func loadMoreIfNecessary() {
         guard let viewModel = viewModel, viewModel.commentViewModels.count == 0 else { return }
         viewModel.loadMore()
+    }
+    
+    private func setupBarButtonItems() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "settings"), style: .plain, target: self, action: #selector(showSettings(_:)))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "create"), style: .plain, target: self, action: #selector(createComment(_:)))
+    }
+    
+    // MARK: - Actions
+    @objc private func showSettings(_ sender: Any) {
+        guard let applicationContext = viewModel?.applicationContext else { return }
+        let settingsViewModel = SettingsViewModel(applicationContext: applicationContext)
+        let viewController = settingsViewModel.provideViewController()
+        viewController.modalPresentationStyle = .popover
+
+        let controller = viewController.popoverPresentationController
+        controller?.permittedArrowDirections = .up
+        controller?.sourceView = sender as? UIView
+        controller?.barButtonItem = navigationItem.leftBarButtonItem
+        controller?.delegate = self
+ 
+        present(viewController, animated: true, completion: nil)
+    }
+    
+    @objc private func createComment(_ sender: Any) {
+        
     }
     
     // MARK: - Maintain Cell Size Cache
@@ -168,5 +195,12 @@ extension RatingCommentsViewController: RatingCommentsViewModelDelegate {
     func ratingCommentsViewModelPageLoadingUnsuccessful(_ ratingCommentsViewModel: RatingCommentsViewModel) {
         guard refreshControl.isRefreshing else { return }
         refreshControl.endRefreshing()
+    }
+}
+
+extension RatingCommentsViewController: UIPopoverPresentationControllerDelegate {
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
     }
 }

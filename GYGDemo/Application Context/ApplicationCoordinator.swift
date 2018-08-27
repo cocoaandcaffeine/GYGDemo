@@ -41,6 +41,7 @@ class ApplicationCoordinator: NSObject {
         UINavigationBar.appearance().barTintColor = UIColor.barTintColor
         UINavigationBar.appearance().isTranslucent = false
         UINavigationBar.appearance().backgroundColor = .white
+        UINavigationBar.appearance().tintColor = .white
         
         UIApplication.shared.statusBarStyle = .lightContent
         
