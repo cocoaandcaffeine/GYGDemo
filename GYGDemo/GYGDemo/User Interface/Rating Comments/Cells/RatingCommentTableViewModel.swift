@@ -9,11 +9,13 @@
 import Foundation
 import UIKit
 
-class RatingCommentTableViewCellModel: ViewModel {
+class RatingCommentTableViewCellModel: ViewModel, CachingIdentifierProviding {
     
     // MARK: Public properties
     let comment: RatingComment
     let applicationContext: ApplicationContext
+    
+    var cachingIdentifier: String = UUID().uuidString
     
     // MARK: Private properties
     private var taskIdentifier: Int?
@@ -31,6 +33,8 @@ extension RatingCommentTableViewCellModel: TableViewCellProviding {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RatingCommentTableViewCell.reuseIdentifier, for: indexPath) as? RatingCommentTableViewCell else { return UITableViewCell() }
         cell.viewModel = self
         cell.selectionStyle = .none
+        cell.titleLabel.text = comment.title ?? "Review comment"
+        cell.messageLabel.text = comment.message
         return cell
     }
 }

@@ -15,7 +15,7 @@ protocol RatingCommentsViewModelDelegate: class {
 
 class RatingCommentsViewModel: ViewModel {
     
-    private static let InitialPageLoadCount = 5
+    private static let InitialPageLoadCount = 2
     private static let PageSize = 5
     
     // MARK: - Public properties
@@ -25,9 +25,7 @@ class RatingCommentsViewModel: ViewModel {
     
     // MARK: - Private properties
     private var isLoading: Bool = false
-    private var pages: [RatingCommentsPage] = [] {
-        didSet { commentViewModels = pages.flatMap { $0.comments }.map({ RatingCommentTableViewCellModel(comment: $0, applicationContext: applicationContext)})}
-    }
+    private var pages: [RatingCommentsPage] = []
     private (set) var commentViewModels: [RatingCommentTableViewCellModel] = []
     
     // MARK: - Lifecycle
@@ -53,7 +51,7 @@ class RatingCommentsViewModel: ViewModel {
         
         applicationContext.apiClient.perform(for: descriptor, resultType: RatingCommentsPage.self, completion: { [weak self] (result, error) in
             
-            guard let page = result, var newPages = self?.pages, let commentViewModels = self?.commentViewModels else {
+            guard let page = result, var newPages = self?.pages, var newCommentViewModels = self?.commentViewModels, let applicationContext = self?.applicationContext else {
                 self?.isLoading = false
                 return print("Page loading error: \(String(describing: error))")
             }
@@ -63,20 +61,24 @@ class RatingCommentsViewModel: ViewModel {
                 return print("Page loading was unsuccessful.")
             }
             
-            var startIndex = commentViewModels.count
+            var startIndex = newCommentViewModels.count
             var endIndex = startIndex + page.comments.count
             var deletedIndexPaths: [IndexPath] = []
             if isReload {
                 startIndex = 0
                 endIndex = page.comments.count
-                for index in 0..<commentViewModels.count {
+                for index in 0..<newCommentViewModels.count {
                     deletedIndexPaths.append(IndexPath(item: index, section: 0))
                 }
                 newPages.removeAll()
+                newCommentViewModels.removeAll()
             }
             
             newPages.append(page)
+            newCommentViewModels.append(contentsOf: page.comments.map({ RatingCommentTableViewCellModel(comment: $0, applicationContext: applicationContext)}))
+            
             self?.pages = newPages
+            self?.commentViewModels = newCommentViewModels
             
             var indexPaths: [IndexPath] = []
             for index in startIndex..<endIndex {
@@ -86,7 +88,7 @@ class RatingCommentsViewModel: ViewModel {
             self?.delegate?.ratingCommentsViewModel(self!, added: indexPaths, deleted: deletedIndexPaths.isEmpty ? nil : deletedIndexPaths)
             self?.isLoading = false
             
-            if newPages.count < RatingCommentsViewModel.InitialPageLoadCount, commentViewModels.count < page.totalReviewComments { self?.loadMore() }
+            if newPages.count < RatingCommentsViewModel.InitialPageLoadCount, newCommentViewModels.count < page.totalReviewComments { self?.loadMore() }
         })
     }
     

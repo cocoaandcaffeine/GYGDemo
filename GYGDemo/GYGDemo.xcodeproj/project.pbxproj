@@ -36,6 +36,7 @@
 		4B9A830A213407B4002C4745 /* RatingCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A8309213407B4002C4745 /* RatingCommentTableViewCell.swift */; };
 		4B9A830C213407D9002C4745 /* RatingCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B9A830B213407D9002C4745 /* RatingCommentTableViewCell.xib */; };
 		4B9A830E213407F0002C4745 /* RatingCommentTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A830D213407F0002C4745 /* RatingCommentTableViewModel.swift */; };
+		4B9A83112134162E002C4745 /* CachingIdentifierProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A83102134162E002C4745 /* CachingIdentifierProviding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		4B9A8309213407B4002C4745 /* RatingCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingCommentTableViewCell.swift; sourceTree = "<group>"; };
 		4B9A830B213407D9002C4745 /* RatingCommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingCommentTableViewCell.xib; sourceTree = "<group>"; };
 		4B9A830D213407F0002C4745 /* RatingCommentTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingCommentTableViewModel.swift; sourceTree = "<group>"; };
+		4B9A83102134162E002C4745 /* CachingIdentifierProviding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachingIdentifierProviding.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 				4B9A82E72133EF73002C4745 /* ReuseIdentifierProviding.swift */,
 				4B9A82E92133EF89002C4745 /* ViewControllerProviding.swift */,
 				4B9A82EB2133EF94002C4745 /* ViewModel.swift */,
+				4B9A83102134162E002C4745 /* CachingIdentifierProviding.swift */,
 			);
 			path = "Common Protocols";
 			sourceTree = "<group>";
@@ -265,8 +268,8 @@
 			isa = PBXGroup;
 			children = (
 				4B9A8309213407B4002C4745 /* RatingCommentTableViewCell.swift */,
-				4B9A830D213407F0002C4745 /* RatingCommentTableViewModel.swift */,
 				4B9A830B213407D9002C4745 /* RatingCommentTableViewCell.xib */,
+				4B9A830D213407F0002C4745 /* RatingCommentTableViewModel.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -413,6 +416,7 @@
 				4B9A83032133F648002C4745 /* RatingCommentsEndpointDescriptor.swift in Sources */,
 				4B9A82E82133EF73002C4745 /* ReuseIdentifierProviding.swift in Sources */,
 				4B9A82EC2133EF94002C4745 /* ViewModel.swift in Sources */,
+				4B9A83112134162E002C4745 /* CachingIdentifierProviding.swift in Sources */,
 				4B9A82DB2133EE64002C4745 /* ApplicationContext.swift in Sources */,
 				4B9A82E62133EF64002C4745 /* ReusableCellProviding.swift in Sources */,
 				4B1ADD052133EB8F009C6CE1 /* AppDelegate.swift in Sources */,

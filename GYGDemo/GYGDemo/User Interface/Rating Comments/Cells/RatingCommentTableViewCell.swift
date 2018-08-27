@@ -11,6 +11,10 @@ import UIKit
 
 class RatingCommentTableViewCell: UITableViewCell, ReusableCellProviding {
  
+    // MARK: - Outlets
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var messageLabel: UILabel!
+    
     // MARK: - Public properties
     var viewModel: RatingCommentTableViewCellModel? {
         didSet { updateUI() }
