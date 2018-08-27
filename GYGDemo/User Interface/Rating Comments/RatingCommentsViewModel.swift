@@ -12,15 +12,25 @@ import UIKit
 protocol RatingCommentsViewModelDelegate: class {
     func ratingCommentsViewModel(_ ratingCommentsViewModel: RatingCommentsViewModel, added addedIndexPaths: [IndexPath], deleted deletedIndexPaths: [IndexPath]?)
     func ratingCommentsViewModel(_ ratingCommentsViewModel: RatingCommentsViewModel, show message: String, completion: @escaping(() -> Void))
+    func ratingCommentsViewModelPageLoadingUnsuccessful(_ ratingCommentsViewModel: RatingCommentsViewModel)
 }
+
+typealias RatingType = RatingCommentsEndpointDescriptor.RatingType
+typealias SortByType = RatingCommentsEndpointDescriptor.SortByType
+typealias SortDirectionType = RatingCommentsEndpointDescriptor.DirectionType
 
 class RatingCommentsViewModel: ViewModel {
     
+    private static let Path: String = "/berlin-l17/tempelhof-2-hour-airport-history-tour-berlin-airlift-more-t23776/reviews.json"
     private static let InitialPageLoadCount = 1
     private static let PageSize = 10
     
     // MARK: - Public properties
     let applicationContext: ApplicationContext
+    
+    var ratingType: RatingType = .all
+    var sortByType: SortByType = .dateOfReview
+    var sortDirectionType: SortDirectionType = .descending
     
     weak var delegate: RatingCommentsViewModelDelegate?
     
@@ -48,7 +58,12 @@ class RatingCommentsViewModel: ViewModel {
         isLoading = true
         
         let pageIndex = isReload ? 0 : pages.count
-        let descriptor = RatingCommentsEndpointDescriptor.standard(path: "/berlin-l17/tempelhof-2-hour-airport-history-tour-berlin-airlift-more-t23776/reviews.json", count: RatingCommentsViewModel.PageSize, page: pageIndex, rating: nil, sortBy: nil, direction: nil)
+        let descriptor = RatingCommentsEndpointDescriptor.standard(path: RatingCommentsViewModel.Path,
+                                                                   count: RatingCommentsViewModel.PageSize,
+                                                                   page: pageIndex,
+                                                                   rating: ratingType,
+                                                                   sortBy: sortByType,
+                                                                   direction: sortDirectionType)
         
         applicationContext.apiClient.perform(for: descriptor, resultType: RatingCommentsPage.self, completion: { [weak self] (result, error) in
             
@@ -58,7 +73,7 @@ class RatingCommentsViewModel: ViewModel {
             }
             
             guard page.successful else {
-                self?.handleErrorMessage("Something went wrong. Please try again.")
+                self?.handlePageLoadingUnsuccessful()
                 return print("Page loading was unsuccessful.")
             }
             
@@ -103,6 +118,11 @@ class RatingCommentsViewModel: ViewModel {
         delegate.ratingCommentsViewModel(self, show: message) { [weak self] in
             self?.isLoading = false
         }
+    }
+    
+    private func handlePageLoadingUnsuccessful() {
+        isLoading = false
+        delegate?.ratingCommentsViewModelPageLoadingUnsuccessful(self)
     }
     
 }

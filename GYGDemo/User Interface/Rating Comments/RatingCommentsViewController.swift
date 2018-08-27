@@ -155,10 +155,18 @@ extension RatingCommentsViewController: RatingCommentsViewModelDelegate {
     func ratingCommentsViewModel(_ ratingCommentsViewModel: RatingCommentsViewModel, show message: String, completion: @escaping(() -> Void)) {
         
         let alertController = UIAlertController(title: message, message: nil, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default) { (Action) in
+        let action = UIAlertAction(title: "OK", style: .default) { [weak self] (Action) in
+            if let refreshControl = self?.refreshControl, refreshControl.isRefreshing {
+                refreshControl.endRefreshing()
+            }
             completion()
         }
         alertController.addAction(action)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func ratingCommentsViewModelPageLoadingUnsuccessful(_ ratingCommentsViewModel: RatingCommentsViewModel) {
+        guard refreshControl.isRefreshing else { return }
+        refreshControl.endRefreshing()
     }
 }

@@ -11,7 +11,7 @@ import Foundation
 enum RatingCommentsEndpointDescriptor: EndpointDescriptor {
     
     enum RatingType: Int {
-        case zero
+        case all
         case one
         case two
         case three
