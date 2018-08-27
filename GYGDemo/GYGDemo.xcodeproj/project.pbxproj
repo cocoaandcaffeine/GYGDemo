@@ -30,9 +30,12 @@
 		4B9A82FA2133F3E7002C4745 /* APIEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82F92133F3E7002C4745 /* APIEnvironment.swift */; };
 		4B9A82FC2133F3EE002C4745 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82FB2133F3EE002C4745 /* APIClient.swift */; };
 		4B9A82FF2133F55F002C4745 /* EndpointDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82FE2133F55F002C4745 /* EndpointDescriptor.swift */; };
-		4B9A83032133F648002C4745 /* TourRatingEndpointDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A83022133F648002C4745 /* TourRatingEndpointDescriptor.swift */; };
+		4B9A83032133F648002C4745 /* RatingCommentsEndpointDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A83022133F648002C4745 /* RatingCommentsEndpointDescriptor.swift */; };
 		4B9A83062133FBD1002C4745 /* RatingCommentsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A83052133FBD1002C4745 /* RatingCommentsPage.swift */; };
 		4B9A83082133FC98002C4745 /* RatingComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A83072133FC98002C4745 /* RatingComment.swift */; };
+		4B9A830A213407B4002C4745 /* RatingCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A8309213407B4002C4745 /* RatingCommentTableViewCell.swift */; };
+		4B9A830C213407D9002C4745 /* RatingCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4B9A830B213407D9002C4745 /* RatingCommentTableViewCell.xib */; };
+		4B9A830E213407F0002C4745 /* RatingCommentTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A830D213407F0002C4745 /* RatingCommentTableViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,9 +85,12 @@
 		4B9A82F92133F3E7002C4745 /* APIEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEnvironment.swift; sourceTree = "<group>"; };
 		4B9A82FB2133F3EE002C4745 /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		4B9A82FE2133F55F002C4745 /* EndpointDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointDescriptor.swift; sourceTree = "<group>"; };
-		4B9A83022133F648002C4745 /* TourRatingEndpointDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourRatingEndpointDescriptor.swift; sourceTree = "<group>"; };
+		4B9A83022133F648002C4745 /* RatingCommentsEndpointDescriptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingCommentsEndpointDescriptor.swift; sourceTree = "<group>"; };
 		4B9A83052133FBD1002C4745 /* RatingCommentsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingCommentsPage.swift; sourceTree = "<group>"; };
 		4B9A83072133FC98002C4745 /* RatingComment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingComment.swift; sourceTree = "<group>"; };
+		4B9A8309213407B4002C4745 /* RatingCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingCommentTableViewCell.swift; sourceTree = "<group>"; };
+		4B9A830B213407D9002C4745 /* RatingCommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RatingCommentTableViewCell.xib; sourceTree = "<group>"; };
+		4B9A830D213407F0002C4745 /* RatingCommentTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingCommentTableViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +220,7 @@
 				4B9A82EF2133F071002C4745 /* RatingCommentsViewController.swift */,
 				4B9A82F12133F07A002C4745 /* RatingCommentsViewController.storyboard */,
 				4B9A82F32133F098002C4745 /* RatingCommentsViewModel.swift */,
+				4B9A830F21340949002C4745 /* Cells */,
 			);
 			path = "Rating Comments";
 			sourceTree = "<group>";
@@ -240,7 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				4B9A82FE2133F55F002C4745 /* EndpointDescriptor.swift */,
-				4B9A83022133F648002C4745 /* TourRatingEndpointDescriptor.swift */,
+				4B9A83022133F648002C4745 /* RatingCommentsEndpointDescriptor.swift */,
 			);
 			path = "Endpoint Descriptors";
 			sourceTree = "<group>";
@@ -252,6 +259,16 @@
 				4B9A83072133FC98002C4745 /* RatingComment.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		4B9A830F21340949002C4745 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4B9A8309213407B4002C4745 /* RatingCommentTableViewCell.swift */,
+				4B9A830D213407F0002C4745 /* RatingCommentTableViewModel.swift */,
+				4B9A830B213407D9002C4745 /* RatingCommentTableViewCell.xib */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -362,6 +379,7 @@
 				4B9A82F22133F07A002C4745 /* RatingCommentsViewController.storyboard in Resources */,
 				4B1ADD0C2133EB90009C6CE1 /* Assets.xcassets in Resources */,
 				4B1ADD0A2133EB8F009C6CE1 /* Main.storyboard in Resources */,
+				4B9A830C213407D9002C4745 /* RatingCommentTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,9 +406,11 @@
 			files = (
 				4B9A82F42133F098002C4745 /* RatingCommentsViewModel.swift in Sources */,
 				4B9A82E22133EF47002C4745 /* TableViewCellProviding.swift in Sources */,
+				4B9A830E213407F0002C4745 /* RatingCommentTableViewModel.swift in Sources */,
+				4B9A830A213407B4002C4745 /* RatingCommentTableViewCell.swift in Sources */,
 				4B1ADD072133EB8F009C6CE1 /* ViewController.swift in Sources */,
 				4B9A82FC2133F3EE002C4745 /* APIClient.swift in Sources */,
-				4B9A83032133F648002C4745 /* TourRatingEndpointDescriptor.swift in Sources */,
+				4B9A83032133F648002C4745 /* RatingCommentsEndpointDescriptor.swift in Sources */,
 				4B9A82E82133EF73002C4745 /* ReuseIdentifierProviding.swift in Sources */,
 				4B9A82EC2133EF94002C4745 /* ViewModel.swift in Sources */,
 				4B9A82DB2133EE64002C4745 /* ApplicationContext.swift in Sources */,

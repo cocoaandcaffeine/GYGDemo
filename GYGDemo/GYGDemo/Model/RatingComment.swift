@@ -14,6 +14,7 @@ struct RatingComment: Decodable {
         case couple = "couple"
         case friends = "friends"
         case familyOld = "family_old"
+        case solo = "solo"
     }
     
     let author: String
@@ -25,8 +26,8 @@ struct RatingComment: Decodable {
     let identifier: Int
     let reviewerCountry: String
     let reviewerName: String
-    let title: String
-    let travelerType: TravelerType
+    let title: String?
+    let travelerType: TravelerType?
     
     
     

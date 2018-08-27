@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TourRatingEndpointDescriptor: EndpointDescriptor {
+enum RatingCommentsEndpointDescriptor: EndpointDescriptor {
     
     enum RatingType: Int {
         case zero
