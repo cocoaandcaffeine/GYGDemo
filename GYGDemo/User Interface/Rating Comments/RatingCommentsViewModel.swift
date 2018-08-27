@@ -15,8 +15,8 @@ protocol RatingCommentsViewModelDelegate: class {
 
 class RatingCommentsViewModel: ViewModel {
     
-    private static let InitialPageLoadCount = 2
-    private static let PageSize = 5
+    private static let InitialPageLoadCount = 1
+    private static let PageSize = 10
     
     // MARK: - Public properties
     let applicationContext: ApplicationContext
