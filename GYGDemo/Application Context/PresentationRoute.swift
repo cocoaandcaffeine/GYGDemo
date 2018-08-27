@@ -13,11 +13,13 @@ struct PresentationRoute {
     
     enum Destination {
         case settings(SettingsViewModel)
+        case createComment(CreateCommentViewModel)
     }
     
     enum PresentationStyle {
         case push
         case modal
+        case modalWithNavigationController
         case popoverFromBarButtonItem(UIBarButtonItem)
     }
     

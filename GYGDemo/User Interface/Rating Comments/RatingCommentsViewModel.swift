@@ -118,6 +118,9 @@ class RatingCommentsViewModel: ViewModel {
     
     func handleCreateCommentTapped(_ sender: UIBarButtonItem) {
         
+        let createCommentViewModel = CreateCommentViewModel(applicationContext: applicationContext)
+        let route = PresentationRoute(destination: .createComment(createCommentViewModel), preferredPresentationStyle: .modalWithNavigationController, prefersAnimatedPresentation: true, transitioningDelegate: nil)
+        applicationContext.applicationCoordinator.present(route)
     }
     
     // MARK: - Helper

@@ -70,6 +70,7 @@ class ApplicationCoordinator: NSObject {
     private func viewControllerFromDestination(_ destination: PresentationRoute.Destination) -> UIViewController {
         switch destination {
         case .settings(let viewModel): return viewModel.provideViewController()
+        case .createComment(let viewModel): return viewModel.provideViewController()
         }
     }
     
@@ -79,6 +80,9 @@ class ApplicationCoordinator: NSObject {
             push(viewController: viewController, animated: animated, completionHandler: completionHandler)
         case .modal:
             presentModal(viewController: viewController, animated: animated, completionHandler: completionHandler)
+        case .modalWithNavigationController:
+            let navController = wrappedInNavigationController(viewController: viewController)
+            presentModal(viewController: navController, animated: animated, completionHandler: completionHandler)
         case .popoverFromBarButtonItem(let barButtonItem):
             presentInPopover(viewController: viewController, animated: animated, from: barButtonItem, completionHandler: completionHandler)
         }

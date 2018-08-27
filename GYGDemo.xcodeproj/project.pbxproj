@@ -19,6 +19,9 @@
 		4B2B45B12134990500C476AB /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B2B45AE2134990500C476AB /* SettingsViewController.storyboard */; };
 		4B2B45B22134990500C476AB /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2B45AF2134990500C476AB /* SettingsViewModel.swift */; };
 		4B2B45B32134990500C476AB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2B45B02134990500C476AB /* SettingsViewController.swift */; };
+		4B89A8BB21349AEB0091DFCC /* CreateCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B89A8BA21349AEB0091DFCC /* CreateCommentViewController.swift */; };
+		4B89A8BD21349AFD0091DFCC /* CreateCommentViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B89A8BC21349AFD0091DFCC /* CreateCommentViewController.storyboard */; };
+		4B89A8BF21349B140091DFCC /* CreateCommentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B89A8BE21349B140091DFCC /* CreateCommentViewModel.swift */; };
 		4B9A82DB2133EE64002C4745 /* ApplicationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82DA2133EE64002C4745 /* ApplicationContext.swift */; };
 		4B9A82DD2133EE6D002C4745 /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82DC2133EE6D002C4745 /* ApplicationCoordinator.swift */; };
 		4B9A82DF2133EE8F002C4745 /* PresentationRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B9A82DE2133EE8F002C4745 /* PresentationRoute.swift */; };
@@ -83,6 +86,9 @@
 		4B2B45AE2134990500C476AB /* SettingsViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
 		4B2B45AF2134990500C476AB /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		4B2B45B02134990500C476AB /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		4B89A8BA21349AEB0091DFCC /* CreateCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommentViewController.swift; sourceTree = "<group>"; };
+		4B89A8BC21349AFD0091DFCC /* CreateCommentViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateCommentViewController.storyboard; sourceTree = "<group>"; };
+		4B89A8BE21349B140091DFCC /* CreateCommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommentViewModel.swift; sourceTree = "<group>"; };
 		4B9A82DA2133EE64002C4745 /* ApplicationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationContext.swift; sourceTree = "<group>"; };
 		4B9A82DC2133EE6D002C4745 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		4B9A82DE2133EE8F002C4745 /* PresentationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationRoute.swift; sourceTree = "<group>"; };
@@ -205,11 +211,21 @@
 		4B2B45AD2134990500C476AB /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				4B2B45B02134990500C476AB /* SettingsViewController.swift */,
 				4B2B45AE2134990500C476AB /* SettingsViewController.storyboard */,
 				4B2B45AF2134990500C476AB /* SettingsViewModel.swift */,
-				4B2B45B02134990500C476AB /* SettingsViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		4B89A8B921349AD20091DFCC /* Create Comment */ = {
+			isa = PBXGroup;
+			children = (
+				4B89A8BA21349AEB0091DFCC /* CreateCommentViewController.swift */,
+				4B89A8BC21349AFD0091DFCC /* CreateCommentViewController.storyboard */,
+				4B89A8BE21349B140091DFCC /* CreateCommentViewModel.swift */,
+			);
+			path = "Create Comment";
 			sourceTree = "<group>";
 		};
 		4B9A82D82133EE45002C4745 /* App Delegate */ = {
@@ -249,6 +265,7 @@
 			children = (
 				4B9A82EE2133F042002C4745 /* Rating Comments */,
 				4B2B45AD2134990500C476AB /* Settings */,
+				4B89A8B921349AD20091DFCC /* Create Comment */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -446,6 +463,7 @@
 				4B9A82F22133F07A002C4745 /* RatingCommentsViewController.storyboard in Resources */,
 				4B1ADD0C2133EB90009C6CE1 /* Assets.xcassets in Resources */,
 				4B1ADD0A2133EB8F009C6CE1 /* Main.storyboard in Resources */,
+				4B89A8BD21349AFD0091DFCC /* CreateCommentViewController.storyboard in Resources */,
 				4B2B45B12134990500C476AB /* SettingsViewController.storyboard in Resources */,
 				4B9A830C213407D9002C4745 /* RatingCommentTableViewCell.xib in Resources */,
 			);
@@ -557,6 +575,7 @@
 				4B9A82E82133EF73002C4745 /* ReuseIdentifierProviding.swift in Sources */,
 				4B9A82EC2133EF94002C4745 /* ViewModel.swift in Sources */,
 				4B9A83112134162E002C4745 /* CachingIdentifierProviding.swift in Sources */,
+				4B89A8BF21349B140091DFCC /* CreateCommentViewModel.swift in Sources */,
 				4B2B45B22134990500C476AB /* SettingsViewModel.swift in Sources */,
 				4B9A82DB2133EE64002C4745 /* ApplicationContext.swift in Sources */,
 				4B9A82E62133EF64002C4745 /* ReusableCellProviding.swift in Sources */,
@@ -566,6 +585,7 @@
 				4B9A82F02133F071002C4745 /* RatingCommentsViewController.swift in Sources */,
 				4B9A82F72133F0D4002C4745 /* UIViewController+Extensions.swift in Sources */,
 				4B9A82DF2133EE8F002C4745 /* PresentationRoute.swift in Sources */,
+				4B89A8BB21349AEB0091DFCC /* CreateCommentViewController.swift in Sources */,
 				4B9A83082133FC98002C4745 /* RatingComment.swift in Sources */,
 				4B276D4E213462F1007F3EC5 /* UIColor+Extensions.swift in Sources */,
 				4B9A82FF2133F55F002C4745 /* EndpointDescriptor.swift in Sources */,
