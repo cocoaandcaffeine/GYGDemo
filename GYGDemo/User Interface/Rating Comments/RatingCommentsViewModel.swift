@@ -11,6 +11,7 @@ import UIKit
 
 protocol RatingCommentsViewModelDelegate: class {
     func ratingCommentsViewModel(_ ratingCommentsViewModel: RatingCommentsViewModel, added addedIndexPaths: [IndexPath], deleted deletedIndexPaths: [IndexPath]?)
+    func ratingCommentsViewModel(_ ratingCommentsViewModel: RatingCommentsViewModel, show message: String, completion: @escaping(() -> Void))
 }
 
 class RatingCommentsViewModel: ViewModel {
@@ -52,12 +53,12 @@ class RatingCommentsViewModel: ViewModel {
         applicationContext.apiClient.perform(for: descriptor, resultType: RatingCommentsPage.self, completion: { [weak self] (result, error) in
             
             guard let page = result, var newPages = self?.pages, var newCommentViewModels = self?.commentViewModels, let applicationContext = self?.applicationContext else {
-                self?.isLoading = false
+                self?.handleErrorMessage("Something went wrong. Please try again.")
                 return print("Page loading error: \(String(describing: error))")
             }
             
             guard page.successful else {
-                self?.isLoading = false
+                self?.handleErrorMessage("Something went wrong. Please try again.")
                 return print("Page loading was unsuccessful.")
             }
             
@@ -93,7 +94,16 @@ class RatingCommentsViewModel: ViewModel {
     }
     
     // MARK: - Helper
-
+    private func handleErrorMessage(_ message: String) {
+        guard let delegate = delegate else {
+            isLoading = false
+            return
+        }
+        
+        delegate.ratingCommentsViewModel(self, show: message) { [weak self] in
+            self?.isLoading = false
+        }
+    }
     
 }
 
