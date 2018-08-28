@@ -14,10 +14,14 @@ class Settings: Codable {
     
     var isRatingFilterEnabled: Bool = false
     var ratingFilterValue: RatingType = .five
+    var sortBy: SortByType = .dateOfReview
+    var sortDirection: SortDirectionType = .descending
     
     private enum CodingKeys: String, CodingKey {
         case isRatingFilterEnabled = "isRatingFilterEnabled"
         case ratingFilterValue = "ratingFilterValue"
+        case sortBy = "sortBy"
+        case sortDirection = "sortDirection"
     }
     
     public init() {}
@@ -27,6 +31,8 @@ class Settings: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.isRatingFilterEnabled = try container.decode(Bool.self, forKey: .isRatingFilterEnabled)
         self.ratingFilterValue = try container.decode(RatingType.self, forKey: .ratingFilterValue)
+        self.sortBy = try container.decode(SortByType.self, forKey: .sortBy)
+        self.sortDirection = try container.decode(SortDirectionType.self, forKey: .sortDirection)
     }
     
     static func load() -> Settings {

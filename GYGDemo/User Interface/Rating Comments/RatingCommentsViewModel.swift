@@ -142,6 +142,8 @@ class RatingCommentsViewModel: ViewModel {
     private func updateSettings() {
         let settings = Settings.load()
         ratingType = settings.isRatingFilterEnabled ? settings.ratingFilterValue : .all
+        sortByType = settings.sortBy
+        sortDirectionType = settings.sortDirection
     }
     
 }

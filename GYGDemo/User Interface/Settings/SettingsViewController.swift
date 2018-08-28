@@ -15,6 +15,8 @@ class SettingsViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var filterRatingSwitch: UISwitch!
     @IBOutlet weak var ratingView: HCSStarRatingView!
+    @IBOutlet weak var sortByControl: UISegmentedControl!
+    @IBOutlet weak var sortDirectionControl: UISegmentedControl!
     
     // MARK: - Public properties
     var viewModel: SettingsViewModel? {
@@ -24,6 +26,7 @@ class SettingsViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        preferredContentSize = CGSize(width: 300.0, height: 240.0)
         updateUI()
     }
     
@@ -45,12 +48,26 @@ class SettingsViewController: UIViewController {
         viewModel?.handleSettingsDidChange()
     }
     
+    @IBAction func sortByAction(_ sender: Any) {
+        let sortBy: SortByType = sortByControl.selectedSegmentIndex == 0 ? .dateOfReview : .rating
+        viewModel?.settings.sortBy = sortBy
+        viewModel?.handleSettingsDidChange()
+    }
+    
+    @IBAction func sortDirectionAction(_ sender: Any) {
+        let sortDirection: SortDirectionType  = sortDirectionControl.selectedSegmentIndex == 0 ? .descending : .ascending
+        viewModel?.settings.sortDirection = sortDirection
+        viewModel?.handleSettingsDidChange()
+    }
+    
     // MARK: - Helper
     private func updateUI() {
         guard isViewLoaded, let settings = viewModel?.settings else { return }
         filterRatingSwitch.isOn = settings.isRatingFilterEnabled
         ratingView.isEnabled = settings.isRatingFilterEnabled
         ratingView.value = CGFloat(settings.ratingFilterValue.rawValue)
+        sortByControl.selectedSegmentIndex = settings.sortBy == .dateOfReview ? 0 : 1
+        sortDirectionControl.selectedSegmentIndex = settings.sortDirection == .descending ? 0 : 1
     }
     
 }

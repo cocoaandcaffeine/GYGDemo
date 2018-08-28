@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		121994AE2B2A1E08724B0937 /* Pods_GYGDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DE3C4C99634376F90CA1F2C /* Pods_GYGDemo.framework */; };
 		4B1ADD052133EB8F009C6CE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1ADD042133EB8F009C6CE1 /* AppDelegate.swift */; };
-		4B1ADD072133EB8F009C6CE1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1ADD062133EB8F009C6CE1 /* ViewController.swift */; };
-		4B1ADD0A2133EB8F009C6CE1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B1ADD082133EB8F009C6CE1 /* Main.storyboard */; };
 		4B1ADD0C2133EB90009C6CE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4B1ADD0B2133EB90009C6CE1 /* Assets.xcassets */; };
 		4B1ADD0F2133EB90009C6CE1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B1ADD0D2133EB90009C6CE1 /* LaunchScreen.storyboard */; };
 		4B1ADD1A2133EB90009C6CE1 /* GYGDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1ADD192133EB90009C6CE1 /* GYGDemoTests.swift */; };
@@ -72,8 +70,6 @@
 		105F8257C1BD2E2C74165D81 /* Pods_GYGDemoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GYGDemoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B1ADD012133EB8F009C6CE1 /* GYGDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GYGDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B1ADD042133EB8F009C6CE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4B1ADD062133EB8F009C6CE1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4B1ADD092133EB8F009C6CE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4B1ADD0B2133EB90009C6CE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4B1ADD0E2133EB90009C6CE1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4B1ADD102133EB90009C6CE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -183,8 +179,6 @@
 				4B9A83042133F998002C4745 /* Model */,
 				4B9A82E02133EF2E002C4745 /* Common Protocols */,
 				4B9A82F52133F0BF002C4745 /* Extensions */,
-				4B1ADD062133EB8F009C6CE1 /* ViewController.swift */,
-				4B1ADD082133EB8F009C6CE1 /* Main.storyboard */,
 				4B1ADD0B2133EB90009C6CE1 /* Assets.xcassets */,
 				4B1ADD0D2133EB90009C6CE1 /* LaunchScreen.storyboard */,
 				4B1ADD102133EB90009C6CE1 /* Info.plist */,
@@ -465,7 +459,6 @@
 				4B1ADD0F2133EB90009C6CE1 /* LaunchScreen.storyboard in Resources */,
 				4B9A82F22133F07A002C4745 /* RatingCommentsViewController.storyboard in Resources */,
 				4B1ADD0C2133EB90009C6CE1 /* Assets.xcassets in Resources */,
-				4B1ADD0A2133EB8F009C6CE1 /* Main.storyboard in Resources */,
 				4B89A8BD21349AFD0091DFCC /* CreateCommentViewController.storyboard in Resources */,
 				4B2B45B12134990500C476AB /* SettingsViewController.storyboard in Resources */,
 				4B9A830C213407D9002C4745 /* RatingCommentTableViewCell.xib in Resources */,
@@ -573,7 +566,6 @@
 				4B9A82E22133EF47002C4745 /* TableViewCellProviding.swift in Sources */,
 				4B9A830E213407F0002C4745 /* RatingCommentTableViewModel.swift in Sources */,
 				4B9A830A213407B4002C4745 /* RatingCommentTableViewCell.swift in Sources */,
-				4B1ADD072133EB8F009C6CE1 /* ViewController.swift in Sources */,
 				4B9A82FC2133F3EE002C4745 /* APIClient.swift in Sources */,
 				4B9A83032133F648002C4745 /* RatingCommentsEndpointDescriptor.swift in Sources */,
 				4B9A82E82133EF73002C4745 /* ReuseIdentifierProviding.swift in Sources */,
@@ -632,14 +624,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		4B1ADD082133EB8F009C6CE1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4B1ADD092133EB8F009C6CE1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		4B1ADD0D2133EB90009C6CE1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

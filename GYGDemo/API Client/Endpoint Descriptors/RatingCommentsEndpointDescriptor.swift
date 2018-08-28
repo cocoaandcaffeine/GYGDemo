@@ -17,12 +17,12 @@ enum RatingType: Int, Codable {
     case five
 }
 
-enum SortByType: String {
+enum SortByType: String, Codable {
     case dateOfReview = "date_of_review"
     case rating = "rating"
 }
 
-enum SortDirectionType: String {
+enum SortDirectionType: String, Codable {
     case ascending = "ASC"
     case descending = "DESC"
 }
