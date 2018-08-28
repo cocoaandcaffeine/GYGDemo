@@ -8,28 +8,28 @@
 
 import Foundation
 
+enum RatingType: Int, Codable {
+    case all
+    case one
+    case two
+    case three
+    case four
+    case five
+}
+
+enum SortByType: String {
+    case dateOfReview = "date_of_review"
+    case rating = "rating"
+}
+
+enum SortDirectionType: String {
+    case ascending = "ASC"
+    case descending = "DESC"
+}
+
 enum RatingCommentsEndpointDescriptor: EndpointDescriptor {
-    
-    enum RatingType: Int {
-        case all
-        case one
-        case two
-        case three
-        case four
-        case five
-    }
-    
-    enum SortByType: String {
-        case dateOfReview = "date_of_review"
-        case rating = "rating"
-    }
-    
-    enum DirectionType: String {
-        case ascending = "ASC"
-        case descending = "DESC"
-    }
-    
-    case standard(path: String, count: Int, page: Int, rating: RatingType?, sortBy: SortByType?, direction: DirectionType? )
+
+    case standard(path: String, count: Int, page: Int, rating: RatingType?, sortBy: SortByType?, direction: SortDirectionType? )
     
     public var path: String {
         switch self {

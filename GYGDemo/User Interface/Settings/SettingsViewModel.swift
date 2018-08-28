@@ -10,7 +10,8 @@ import Foundation
 import UIKit
 
 protocol SettingsViewModelDelegate: class {
-    
+    func settingsViewModelSettingsDidChange(_ viewModel: SettingsViewModel)
+    func settingsViewModelSettingsDidDisappear(_ viewModel: SettingsViewModel)
 }
 
 class SettingsViewModel: ViewModel {
@@ -19,9 +20,24 @@ class SettingsViewModel: ViewModel {
     let applicationContext: ApplicationContext
     weak var delegate: SettingsViewModelDelegate?
     
+    private (set) lazy var settings: Settings = {
+        return Settings.load()
+    }()
+    
     // MARK: - Lifecycle
     init(applicationContext: ApplicationContext) {
         self.applicationContext = applicationContext
+    }
+    
+    // MARK: - Change handling
+    
+    func handleSettingsDidChange() {
+        settings.save()
+        delegate?.settingsViewModelSettingsDidChange(self)
+    }
+    
+    func handleSettingsDidDisappear() {
+        delegate?.settingsViewModelSettingsDidDisappear(self)
     }
 }
 

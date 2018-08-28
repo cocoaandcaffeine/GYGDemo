@@ -18,24 +18,39 @@ class SettingsViewController: UIViewController {
     
     // MARK: - Public properties
     var viewModel: SettingsViewModel? {
-        didSet {
-            oldValue?.delegate = nil
-            viewModel?.delegate = self
-        }
+        didSet { updateUI() }
+    }
+    
+    // MARK: - Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        updateUI()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        viewModel?.handleSettingsDidDisappear()
     }
     
     // MARK: - Actions
     @IBAction func filterRatingSwitchAction(_ sender: Any) {
-        print("switch")
         ratingView.isEnabled = filterRatingSwitch.isOn
+        viewModel?.settings.isRatingFilterEnabled = filterRatingSwitch.isOn
+        viewModel?.handleSettingsDidChange()
     }
     
     @IBAction func ratingViewAction(_ sender: Any) {
-        print("view")
+        guard let rating = RatingType(rawValue: Int(ratingView.value)) else { return }
+        viewModel?.settings.ratingFilterValue = rating
+        viewModel?.handleSettingsDidChange()
     }
     
-}
-
-extension SettingsViewController: SettingsViewModelDelegate {
+    // MARK: - Helper
+    private func updateUI() {
+        guard isViewLoaded, let settings = viewModel?.settings else { return }
+        filterRatingSwitch.isOn = settings.isRatingFilterEnabled
+        ratingView.isEnabled = settings.isRatingFilterEnabled
+        ratingView.value = CGFloat(settings.ratingFilterValue.rawValue)
+    }
     
 }

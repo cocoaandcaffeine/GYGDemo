@@ -15,10 +15,6 @@ protocol RatingCommentsViewModelDelegate: class {
     func ratingCommentsViewModelPageLoadingUnsuccessful(_ ratingCommentsViewModel: RatingCommentsViewModel)
 }
 
-typealias RatingType = RatingCommentsEndpointDescriptor.RatingType
-typealias SortByType = RatingCommentsEndpointDescriptor.SortByType
-typealias SortDirectionType = RatingCommentsEndpointDescriptor.DirectionType
-
 class RatingCommentsViewModel: ViewModel {
     
     private static let Path: String = "/berlin-l17/tempelhof-2-hour-airport-history-tour-berlin-airlift-more-t23776/reviews.json"
@@ -38,10 +34,12 @@ class RatingCommentsViewModel: ViewModel {
     private var isLoading: Bool = false
     private var pages: [RatingCommentsPage] = []
     private (set) var commentViewModels: [RatingCommentTableViewCellModel] = []
+    private var needsSettingsUpdate: Bool = false
     
     // MARK: - Lifecycle
     init(applicationContext: ApplicationContext) {
         self.applicationContext = applicationContext
+        updateSettings()
     }
     
     // MARK: - Loading
@@ -112,6 +110,7 @@ class RatingCommentsViewModel: ViewModel {
     func handleShowSettingsTapped(_ sender: UIBarButtonItem) {
         
         let settingsViewModel = SettingsViewModel(applicationContext: applicationContext)
+        settingsViewModel.delegate = self
         let route = PresentationRoute(destination: .settings(settingsViewModel), preferredPresentationStyle: .popoverFromBarButtonItem(sender), prefersAnimatedPresentation: true, transitioningDelegate: nil)
         applicationContext.applicationCoordinator.present(route)
     }
@@ -140,6 +139,11 @@ class RatingCommentsViewModel: ViewModel {
         delegate?.ratingCommentsViewModelPageLoadingUnsuccessful(self)
     }
     
+    private func updateSettings() {
+        let settings = Settings.load()
+        ratingType = settings.isRatingFilterEnabled ? settings.ratingFilterValue : .all
+    }
+    
 }
 
 extension RatingCommentsViewModel: TableViewCellProviding {
@@ -154,5 +158,19 @@ extension RatingCommentsViewModel: ViewControllerProviding {
         let viewController = RatingCommentsViewController.instantiateFromStoryboard()
         viewController.viewModel = self
         return viewController
+    }
+}
+
+extension RatingCommentsViewModel: SettingsViewModelDelegate {
+    
+    func settingsViewModelSettingsDidChange(_ viewModel: SettingsViewModel) {
+        needsSettingsUpdate = true
+    }
+    
+    func settingsViewModelSettingsDidDisappear(_ viewModel: SettingsViewModel) {
+        guard needsSettingsUpdate else { return }
+        needsSettingsUpdate = false
+        updateSettings()
+        reloadData()
     }
 }
