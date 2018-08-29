@@ -87,6 +87,7 @@
 		4B89A8BC21349AFD0091DFCC /* CreateCommentViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateCommentViewController.storyboard; sourceTree = "<group>"; };
 		4B89A8BE21349B140091DFCC /* CreateCommentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommentViewModel.swift; sourceTree = "<group>"; };
 		4B89A8C02135483D0091DFCC /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		4B89A9192136848D0091DFCC /* HCSStarRatingView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = HCSStarRatingView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B9A82DA2133EE64002C4745 /* ApplicationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationContext.swift; sourceTree = "<group>"; };
 		4B9A82DC2133EE6D002C4745 /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		4B9A82DE2133EE8F002C4745 /* PresentationRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationRoute.swift; sourceTree = "<group>"; };
@@ -328,6 +329,7 @@
 		5F166D73315E0C807FDCDCDD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4B89A9192136848D0091DFCC /* HCSStarRatingView.framework */,
 				8DE3C4C99634376F90CA1F2C /* Pods_GYGDemo.framework */,
 				105F8257C1BD2E2C74165D81 /* Pods_GYGDemoTests.framework */,
 				E87708AAB61341F717815CC5 /* Pods_GYGDemoUITests.framework */,
@@ -755,7 +757,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 36K98U82S4;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GYGDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -774,7 +776,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 36K98U82S4;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = GYGDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
