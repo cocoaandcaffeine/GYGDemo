@@ -13,9 +13,7 @@ class CreateCommentViewController: UIViewController {
     
     // MARK: - Public properties
     var viewModel: CreateCommentViewModel? {
-        didSet {
-            
-        }
+        didSet { updateUI() }
     }
     
     // MARK: - Lifecycle
@@ -26,10 +24,16 @@ class CreateCommentViewController: UIViewController {
         setupBarButtonItems()
     }
     
+    // MARK: - Update UI
+    private func updateUI() {
+        
+    }
+    
     // MARK: - Helper
     private func setupBarButtonItems() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAction(_:)))
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Send", style: .plain, target: self, action: #selector(createComment(_:)))
+        navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
     // MARK: - Actions
