@@ -17,6 +17,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var ratingView: HCSStarRatingView!
     @IBOutlet weak var sortByControl: UISegmentedControl!
     @IBOutlet weak var sortDirectionControl: UISegmentedControl!
+    @IBOutlet weak var filterLanguagesSwitch: UISwitch!
     
     // MARK: - Public properties
     var viewModel: SettingsViewModel? {
@@ -26,7 +27,7 @@ class SettingsViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        preferredContentSize = CGSize(width: 300.0, height: 240.0)
+        preferredContentSize = CGSize(width: 300.0, height: 310.0)
         updateUI()
     }
     
@@ -60,10 +61,16 @@ class SettingsViewController: UIViewController {
         viewModel?.handleSettingsDidChange()
     }
     
+    @IBAction func filterForeignLanguagesSwitchAction(_ sender: Any) {
+        viewModel?.settings.isLanguageFilterEnabled = filterLanguagesSwitch.isOn
+        viewModel?.handleSettingsDidChange()
+    }
+    
     // MARK: - Helper
     private func updateUI() {
         guard isViewLoaded, let settings = viewModel?.settings else { return }
         filterRatingSwitch.isOn = settings.isRatingFilterEnabled
+        filterLanguagesSwitch.isOn = settings.isLanguageFilterEnabled
         ratingView.isEnabled = settings.isRatingFilterEnabled
         ratingView.value = CGFloat(settings.ratingFilterValue.rawValue)
         sortByControl.selectedSegmentIndex = settings.sortBy == .dateOfReview ? 0 : 1

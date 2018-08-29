@@ -63,6 +63,13 @@
                                     <constraint firstAttribute="height" constant="1" id="Ywv-lj-OIr"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Au-by-iNp">
+                                <rect key="frame" x="16" y="233" width="343" height="1"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="LRF-KE-sKF"/>
+                                </constraints>
+                            </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="urG-59-dgL">
                                 <rect key="frame" x="222" y="133" width="137" height="28"/>
                                 <segments>
@@ -96,17 +103,35 @@
                                     <action selector="sortDirectionAction:" destination="uL8-TA-Xei" eventType="valueChanged" id="TPS-g9-dyz"/>
                                 </connections>
                             </segmentedControl>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tbi-PK-Zuz">
+                                <rect key="frame" x="308" y="249" width="51" height="31"/>
+                                <connections>
+                                    <action selector="filterForeignLanguagesSwitchAction:" destination="uL8-TA-Xei" eventType="valueChanged" id="2We-OU-vYH"/>
+                                    <action selector="filterRatingSwitchAction:" destination="uL8-TA-Xei" eventType="valueChanged" id="wHb-YZ-Bfa"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Filter Foreign Languages" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zxK-p0-A6H">
+                                <rect key="frame" x="16" y="252" width="180" height="25"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="CKj-He-bZf" firstAttribute="top" secondItem="5fg-Fl-LKv" secondAttribute="bottom" constant="24" id="2y8-Hk-Mgx"/>
+                            <constraint firstItem="zxK-p0-A6H" firstAttribute="centerY" secondItem="tbi-PK-Zuz" secondAttribute="centerY" id="4pe-sI-7WA"/>
                             <constraint firstItem="vgi-hw-hgp" firstAttribute="top" secondItem="CKj-He-bZf" secondAttribute="bottom" constant="24" id="59O-5b-JYS"/>
                             <constraint firstAttribute="trailing" secondItem="urG-59-dgL" secondAttribute="trailing" constant="16" id="5dv-xd-5Op"/>
+                            <constraint firstItem="0Au-by-iNp" firstAttribute="leading" secondItem="NvI-pk-XkE" secondAttribute="leading" constant="16" id="6LJ-X5-QnL"/>
+                            <constraint firstItem="zxK-p0-A6H" firstAttribute="leading" secondItem="NvI-pk-XkE" secondAttribute="leading" constant="16" id="9t6-Hv-Wj9"/>
+                            <constraint firstItem="0Au-by-iNp" firstAttribute="top" secondItem="DPf-wT-32V" secondAttribute="bottom" constant="16" id="A5V-sC-2xI"/>
                             <constraint firstItem="urG-59-dgL" firstAttribute="top" secondItem="CKj-He-bZf" secondAttribute="bottom" constant="16" id="BPV-kt-uCc"/>
                             <constraint firstAttribute="trailing" secondItem="DPf-wT-32V" secondAttribute="trailing" constant="16" id="Mhe-ET-9P0"/>
                             <constraint firstItem="nKp-4P-9FU" firstAttribute="leading" secondItem="NvI-pk-XkE" secondAttribute="leading" constant="16" id="PmO-RY-uIJ"/>
                             <constraint firstAttribute="trailing" secondItem="CKj-He-bZf" secondAttribute="trailing" constant="16" id="SqW-yW-hXn"/>
                             <constraint firstItem="DPf-wT-32V" firstAttribute="width" secondItem="urG-59-dgL" secondAttribute="width" id="WED-nN-EtB"/>
+                            <constraint firstAttribute="trailing" secondItem="0Au-by-iNp" secondAttribute="trailing" constant="16" id="WRX-cq-QOk"/>
                             <constraint firstItem="nKp-4P-9FU" firstAttribute="top" secondItem="NvI-pk-XkE" secondAttribute="top" constant="23" id="XyX-DS-ONp"/>
                             <constraint firstItem="5fg-Fl-LKv" firstAttribute="centerX" secondItem="NvI-pk-XkE" secondAttribute="centerX" id="YRF-74-8UL"/>
                             <constraint firstItem="5fg-Fl-LKv" firstAttribute="top" secondItem="TjG-EH-vD2" secondAttribute="bottom" constant="18" id="aY8-VM-MrB"/>
@@ -114,6 +139,8 @@
                             <constraint firstAttribute="trailing" secondItem="TjG-EH-vD2" secondAttribute="trailing" constant="18" id="bl9-G4-in7"/>
                             <constraint firstItem="lcv-Fk-XUN" firstAttribute="leading" secondItem="NvI-pk-XkE" secondAttribute="leading" constant="16" id="bqR-iG-aB7"/>
                             <constraint firstItem="CKj-He-bZf" firstAttribute="leading" secondItem="NvI-pk-XkE" secondAttribute="leading" constant="16" id="cHV-bV-Jyc"/>
+                            <constraint firstAttribute="trailing" secondItem="tbi-PK-Zuz" secondAttribute="trailing" constant="16" id="dzO-XL-09t"/>
+                            <constraint firstItem="tbi-PK-Zuz" firstAttribute="top" secondItem="0Au-by-iNp" secondAttribute="bottom" constant="15" id="jO4-Qf-P7K"/>
                             <constraint firstItem="lcv-Fk-XUN" firstAttribute="centerY" secondItem="DPf-wT-32V" secondAttribute="centerY" id="mwA-nb-ffk"/>
                             <constraint firstItem="TjG-EH-vD2" firstAttribute="top" secondItem="NvI-pk-XkE" secondAttribute="top" constant="20" id="pgM-qI-a1D"/>
                             <constraint firstItem="DPf-wT-32V" firstAttribute="top" secondItem="urG-59-dgL" secondAttribute="bottom" constant="27" id="zYz-pu-waU"/>
@@ -122,6 +149,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="604"/>
                     <connections>
+                        <outlet property="filterLanguagesSwitch" destination="tbi-PK-Zuz" id="rsd-Uh-odf"/>
                         <outlet property="filterRatingSwitch" destination="TjG-EH-vD2" id="Ca6-c7-EES"/>
                         <outlet property="ratingView" destination="5fg-Fl-LKv" id="pXO-oI-vMv"/>
                         <outlet property="sortByControl" destination="urG-59-dgL" id="2X5-CD-x7q"/>

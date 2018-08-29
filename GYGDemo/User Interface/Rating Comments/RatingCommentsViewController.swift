@@ -64,7 +64,7 @@ class RatingCommentsViewController: UIViewController {
     
     private func loadMoreIfNecessary() {
         guard let viewModel = viewModel, viewModel.commentViewModels.count == 0 else { return }
-        viewModel.loadMore()
+        viewModel.reloadData()
     }
     
     private func setupBarButtonItems() {

@@ -18,8 +18,8 @@ protocol RatingCommentsViewModelDelegate: class {
 class RatingCommentsViewModel: ViewModel {
     
     private static let Path: String = "/berlin-l17/tempelhof-2-hour-airport-history-tour-berlin-airlift-more-t23776/reviews.json"
-    private static let InitialPageLoadCount = 1
     private static let PageSize = 10
+    private static let ReloadAndFilterPageSize = 20
     
     // MARK: - Public properties
     let applicationContext: ApplicationContext
@@ -27,6 +27,7 @@ class RatingCommentsViewModel: ViewModel {
     var ratingType: RatingType = .all
     var sortByType: SortByType = .dateOfReview
     var sortDirectionType: SortDirectionType = .descending
+    var isLanguageFilterEnabled: Bool = false
     
     weak var delegate: RatingCommentsViewModelDelegate?
     
@@ -56,8 +57,9 @@ class RatingCommentsViewModel: ViewModel {
         isLoading = true
         
         let pageIndex = isReload ? 0 : pages.count
+        let pageSize = isReload && isLanguageFilterEnabled ? RatingCommentsViewModel.ReloadAndFilterPageSize : RatingCommentsViewModel.PageSize
         let descriptor = RatingCommentsEndpointDescriptor.standard(path: RatingCommentsViewModel.Path,
-                                                                   count: RatingCommentsViewModel.PageSize,
+                                                                   count: pageSize,
                                                                    page: pageIndex,
                                                                    rating: ratingType,
                                                                    sortBy: sortByType,
@@ -65,7 +67,12 @@ class RatingCommentsViewModel: ViewModel {
         
         applicationContext.apiClient.perform(for: descriptor, resultType: RatingCommentsPage.self, completion: { [weak self] (result, error) in
             
-            guard let page = result, var newPages = self?.pages, var newCommentViewModels = self?.commentViewModels, let applicationContext = self?.applicationContext else {
+            guard
+                let page = result,
+                var newPages = self?.pages,
+                var newCommentViewModels = self?.commentViewModels,
+                let applicationContext = self?.applicationContext,
+                let isLanguageFilterEnabled = self?.isLanguageFilterEnabled else {
                 self?.handleErrorMessage("Something went wrong. Please try again.")
                 return print("Page loading error: \(String(describing: error))")
             }
@@ -75,21 +82,28 @@ class RatingCommentsViewModel: ViewModel {
                 return print("Page loading was unsuccessful.")
             }
             
+            var comments = page.comments
+            if isLanguageFilterEnabled {
+                comments = comments.filter({ !$0.isForeignLanguage })
+            }
+
             var startIndex = newCommentViewModels.count
-            var endIndex = startIndex + page.comments.count
+            var endIndex = startIndex + comments.count
             var deletedIndexPaths: [IndexPath] = []
             if isReload {
                 startIndex = 0
-                endIndex = page.comments.count
+                endIndex = comments.count
                 for index in 0..<newCommentViewModels.count {
                     deletedIndexPaths.append(IndexPath(item: index, section: 0))
                 }
                 newPages.removeAll()
                 newCommentViewModels.removeAll()
             }
+
+            let currentCommentViewModels = comments.map({ RatingCommentTableViewCellModel(comment: $0, applicationContext: applicationContext)})
             
             newPages.append(page)
-            newCommentViewModels.append(contentsOf: page.comments.map({ RatingCommentTableViewCellModel(comment: $0, applicationContext: applicationContext)}))
+            newCommentViewModels.append(contentsOf: currentCommentViewModels)
             
             self?.pages = newPages
             self?.commentViewModels = newCommentViewModels
@@ -101,8 +115,6 @@ class RatingCommentsViewModel: ViewModel {
             
             self?.delegate?.ratingCommentsViewModel(self!, added: indexPaths, deleted: deletedIndexPaths.isEmpty ? nil : deletedIndexPaths)
             self?.isLoading = false
-            
-            if newPages.count < RatingCommentsViewModel.InitialPageLoadCount, newCommentViewModels.count < page.totalReviewComments { self?.loadMore() }
         })
     }
     
@@ -144,6 +156,7 @@ class RatingCommentsViewModel: ViewModel {
         ratingType = settings.isRatingFilterEnabled ? settings.ratingFilterValue : .all
         sortByType = settings.sortBy
         sortDirectionType = settings.sortDirection
+        isLanguageFilterEnabled = settings.isLanguageFilterEnabled
     }
     
 }
