@@ -154,7 +154,7 @@ extension RatingCommentsViewController: UITableViewDelegate {
 
 extension RatingCommentsViewController: RatingCommentsViewModelDelegate {
     
-    func ratingCommentsViewModel(_ ratingCommentsViewModel: RatingCommentsViewModel, added addedIndexPaths: [IndexPath], deleted deletedIndexPaths: [IndexPath]?) {
+    func ratingCommentsViewModel(_ ratingCommentsViewModel: RatingCommentsViewModel, added addedIndexPaths: [IndexPath], deleted deletedIndexPaths: [IndexPath]?, wasReload: Bool) {
         guard isViewLoaded else { return }
         
         tableView.performBatchUpdates({
@@ -163,6 +163,7 @@ extension RatingCommentsViewController: RatingCommentsViewModelDelegate {
                 tableView.deleteRows(at: deletedIndexPaths, with: .none)
             }
         }, completion: { [weak self] (Bool) in
+            if wasReload { self?.tableView.setContentOffset(.zero, animated: false) }
             guard let refreshControl = self?.refreshControl, refreshControl.isRefreshing else { return }
             refreshControl.endRefreshing()
         })

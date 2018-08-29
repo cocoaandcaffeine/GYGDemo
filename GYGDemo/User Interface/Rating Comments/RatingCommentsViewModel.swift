@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol RatingCommentsViewModelDelegate: class {
-    func ratingCommentsViewModel(_ ratingCommentsViewModel: RatingCommentsViewModel, added addedIndexPaths: [IndexPath], deleted deletedIndexPaths: [IndexPath]?)
+    func ratingCommentsViewModel(_ ratingCommentsViewModel: RatingCommentsViewModel, added addedIndexPaths: [IndexPath], deleted deletedIndexPaths: [IndexPath]?, wasReload: Bool)
     func ratingCommentsViewModel(_ ratingCommentsViewModel: RatingCommentsViewModel, show message: String, completion: @escaping(() -> Void))
     func ratingCommentsViewModelPageLoadingUnsuccessful(_ ratingCommentsViewModel: RatingCommentsViewModel)
 }
@@ -113,7 +113,7 @@ class RatingCommentsViewModel: ViewModel {
                 indexPaths.append(IndexPath(item: index, section: 0))
             }
             
-            self?.delegate?.ratingCommentsViewModel(self!, added: indexPaths, deleted: deletedIndexPaths.isEmpty ? nil : deletedIndexPaths)
+            self?.delegate?.ratingCommentsViewModel(self!, added: indexPaths, deleted: deletedIndexPaths.isEmpty ? nil : deletedIndexPaths, wasReload: isReload)
             self?.isLoading = false
         })
     }
